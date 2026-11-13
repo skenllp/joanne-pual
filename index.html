@@ -13,12 +13,18 @@
   <meta property="og:description"
     content="Tuesday, 29 December 2026 · CSI Convention Center, Kollam | Saturday, 2 January 2027 · Hotel Dimora, Trivandrum">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://joanne-pual.vercel.app/">
+  <meta property="og:image" content="https://joanne-pual.vercel.app/og.jpg">
+  <meta property="og:image:width" content="2048">
+  <meta property="og:image:height" content="1152">
+  <meta property="og:image:alt" content="Joanne Biju Justus &amp; Paul Daniel Joseph — Wedding Invitation">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Joanne Biju Justus &amp; Paul Daniel Joseph — Wedding Invitation">
   <meta name="twitter:description"
     content="Tuesday, 29 December 2026 · CSI Convention Center, Kollam | Saturday, 2 January 2027 · Hotel Dimora, Trivandrum">
+  <meta name="twitter:image" content="https://joanne-pual.vercel.app/og.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -262,6 +268,59 @@
           <div class="count-box"><span id="cd-mins">00</span><small>Minutes</small></div>
           <div class="count-box"><span id="cd-secs">00</span><small>Seconds</small></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ---- RSVP ---- -->
+    <section id="rsvp" class="rsvp-section">
+      <div class="rsvp-card reveal">
+        <p class="eyebrow">Kindly Respond</p>
+        <h2 class="section-title">RSVP</h2>
+        <div class="title-underline" aria-hidden="true"></div>
+        <p class="rsvp-note">Please let us know by 15 December 2026</p>
+
+        <form id="rsvp-form" class="rsvp-form" novalidate>
+          <label class="rsvp-field">
+            <span>Full Name *</span>
+            <input type="text" name="name" required autocomplete="name">
+          </label>
+          <label class="rsvp-field">
+            <span>Phone Number *</span>
+            <input type="tel" name="phone" required autocomplete="tel">
+          </label>
+
+          <fieldset class="rsvp-field">
+            <span>Will you attend? *</span>
+            <div class="rsvp-pills">
+              <label><input type="radio" name="attending" value="Yes" required><i>Joyfully Accept</i></label>
+              <label><input type="radio" name="attending" value="No"><i>Regretfully Decline</i></label>
+            </div>
+          </fieldset>
+
+          <div id="rsvp-attend-fields">
+            <fieldset class="rsvp-field">
+              <span>Which event(s)? *</span>
+              <div class="rsvp-pills">
+                <label><input type="checkbox" name="events" value="Wedding Ceremony"><i>Wedding &middot; 29 Dec</i></label>
+                <label><input type="checkbox" name="events" value="Reception"><i>Reception &middot; 2 Jan</i></label>
+              </div>
+            </fieldset>
+            <label class="rsvp-field">
+              <span>Number of Guests (including you)</span>
+              <select name="guests">
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="rsvp-field">
+            <span>Message for the couple</span>
+            <textarea name="message" rows="3"></textarea>
+          </label>
+
+          <p class="rsvp-status" id="rsvp-status" role="status"></p>
+          <button type="submit" class="cal-btn rsvp-submit">Send RSVP</button>
+        </form>
       </div>
     </section>
 

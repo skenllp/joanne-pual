@@ -354,3 +354,57 @@
   });
   document.addEventListener("click", function () { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); });
 })();
+
+/* ================= RSVP (Google Sheets via Apps Script) ================= */
+(function () {
+  // Paste your Apps Script Web App URL here (ends with /exec)
+  var RSVP_URL = "https://script.google.com/macros/s/AKfycbxRKWzs92sJ2j1Rv2BjZbfDQJib8hEhcVF25pECPsAg5SykRsAArtlqjQvx5m7uUmjS/exec";
+
+  var form = document.getElementById("rsvp-form");
+  if (!form) return;
+  var status = document.getElementById("rsvp-status");
+  var attendFields = document.getElementById("rsvp-attend-fields");
+  var btn = form.querySelector(".rsvp-submit");
+
+  form.addEventListener("change", function (e) {
+    if (e.target.name === "attending") attendFields.hidden = e.target.value === "No";
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    status.className = "rsvp-status";
+    var name = form.elements.name.value.trim();
+    var phone = form.elements.phone.value.trim();
+    var att = form.querySelector('input[name="attending"]:checked');
+    var events = Array.prototype.map.call(
+      form.querySelectorAll('input[name="events"]:checked'),
+      function (c) { return c.value; }
+    );
+    if (!name || !phone || !att) { status.textContent = "Please fill in your name, phone and attendance."; return; }
+    if (att.value === "Yes" && !events.length) { status.textContent = "Please choose which event(s) you will attend."; return; }
+
+    var yes = att.value === "Yes";
+    var data = new URLSearchParams({
+      name: name,
+      phone: phone,
+      attending: att.value,
+      events: yes ? events.join(", ") : "-",
+      guests: yes ? form.elements.guests.value : "0",
+      message: form.elements.message.value.trim()
+    });
+
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    fetch(RSVP_URL, { method: "POST", mode: "no-cors", body: data })
+      .then(function () {
+        form.reset();
+        attendFields.hidden = false;
+        status.className = "rsvp-status ok";
+        status.textContent = yes
+          ? "Thank you! We can't wait to celebrate with you ♥"
+          : "Thank you for letting us know. You'll be missed ♥";
+      })
+      .catch(function () { status.textContent = "Something went wrong. Please try again."; })
+      .then(function () { btn.disabled = false; btn.textContent = "Send RSVP"; });
+  });
+})();

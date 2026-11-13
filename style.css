@@ -964,3 +964,34 @@ section {
   object-fit: cover; object-position: center top;
   border-radius: 0; box-shadow: none;
 }
+
+/* ================= RSVP ================= */
+.rsvp-section { padding: 60px 20px; display: flex; justify-content: center; }
+.rsvp-card {
+  width: 100%; max-width: 520px; background: var(--card); border: 1px solid var(--gold-line);
+  border-radius: 28px; padding: 44px 28px 36px; text-align: center; box-shadow: 0 16px 36px rgba(50,44,38,.10);
+}
+.rsvp-note { font-family: var(--serif); font-style: italic; color: var(--ink-soft); margin: 6px 0 26px; }
+.rsvp-form { text-align: left; display: grid; gap: 18px; }
+.rsvp-field { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.rsvp-field > span { font-family: var(--label); font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.rsvp-field input[type=text], .rsvp-field input[type=tel], .rsvp-field select, .rsvp-field textarea {
+  width: 100%; box-sizing: border-box; font: 1.1rem var(--serif); color: var(--ink);
+  background: var(--cream); border: 1px solid var(--gold-line); border-radius: 12px; padding: 12px 14px; outline: none;
+}
+.rsvp-field input:focus, .rsvp-field select:focus, .rsvp-field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184,146,63,.15); }
+.rsvp-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.rsvp-pills label { cursor: pointer; position: relative; }
+.rsvp-pills input { position: absolute; opacity: 0; pointer-events: none; }
+.rsvp-pills i {
+  display: inline-block; font-style: normal; font-family: var(--serif); font-size: 1.05rem;
+  padding: 9px 18px; border: 1px solid var(--gold-line); border-radius: 999px; color: var(--ink); transition: .2s;
+}
+.rsvp-pills input:checked + i { background: var(--gold); border-color: var(--gold); color: #fff; }
+.rsvp-pills input:focus-visible + i { outline: 2px solid var(--gold); outline-offset: 2px; }
+#rsvp-attend-fields { display: grid; gap: 18px; }
+#rsvp-attend-fields[hidden] { display: none; }
+.rsvp-status { min-height: 1.2em; margin: 0; text-align: center; font-family: var(--serif); font-style: italic; color: var(--terracotta); }
+.rsvp-status.ok { color: var(--gold); }
+.rsvp-submit { justify-self: center; }
+.rsvp-submit:disabled { opacity: .6; cursor: wait; }
